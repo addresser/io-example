@@ -1,7 +1,7 @@
 module.exports = (errorLoggingHandler) => {
 
-  return (err) => {
-    errorLoggingHandler(err);
+  return async (err) => {
+    await errorLoggingHandler(err);
 
     process.exit(1);
   };
