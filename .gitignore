@@ -1,0 +1,6 @@
+*~
+.idea
+gulpfile.js
+
+/environment
+/node_modules
