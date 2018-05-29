@@ -8,6 +8,8 @@ module.exports = (AMQPFacade, amqpChatItems, chatHistoryQueueListener, relativeM
     ) {
       super(amqpItems);
 
+      this._initialized = false;
+
       this.chatHistoryQueueListener = chatHistoryQueueListener;
       this.relativeMessageQueueListener = relativeMessageQueueListener;
     }
@@ -19,7 +21,7 @@ module.exports = (AMQPFacade, amqpChatItems, chatHistoryQueueListener, relativeM
     }
 
     async _initialize() {
-      if(this._amqpItems.initialized) {
+      if(this._initialized) {
         return;
       }
 
@@ -28,7 +30,7 @@ module.exports = (AMQPFacade, amqpChatItems, chatHistoryQueueListener, relativeM
       await this.chatHistoryQueueListener();
       await this.relativeMessageQueueListener();
 
-      this._amqpItems.initialized = true;
+      this._initialized = true;
     }
   }
 

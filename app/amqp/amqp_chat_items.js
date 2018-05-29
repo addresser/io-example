@@ -12,8 +12,6 @@ module.exports = (amqpConnection, connectErrorHandler, amqpMessageHandler, handl
       await channel.bindQueue(chatHistoryQueue.queue, chatExchange.exchange);
 
       return {
-        initialized: false,
-
         channel: channel,
         chatExchange: chatExchange,
         relativeMessageQueue: relativeMessageQueue,
